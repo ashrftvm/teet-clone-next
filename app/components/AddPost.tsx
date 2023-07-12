@@ -21,7 +21,7 @@ export default function CreatePost() {
       onError: (err) => {
         if (err instanceof AxiosError) {
           toast.error(err?.response?.data.message, { id: toastPostID });
-          console.log(toastPostID, "error");
+          // console.log(toastPostID, "error");
         }
         setIsDisabled(false);
       },
@@ -45,7 +45,7 @@ export default function CreatePost() {
 
   return (
     <form
-      className="my-8 p-8 rounded-md"
+      className="my-8 rounded-md"
       onSubmit={submitPost}
     >
       <div className="flex flex-col my-4">
