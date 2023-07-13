@@ -4,6 +4,8 @@ import Image from "next/image";
 import { AllPosts } from "../types/AllPosts";
 import Toggle from "./Toggle";
 import { useState } from "react";
+import axios from "axios";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export default function EditPost({
   id,
@@ -12,7 +14,27 @@ export default function EditPost({
   title,
   Comment,
 }: AllPosts) {
+  // Toggle
   const [toggle, setToggle] = useState(false);
+
+  // Deleting the teet
+  const { mutate } = useMutation(
+    async (id: string) =>
+      await axios.post("/api/posts/deletePost", { data: { postId: id } }),
+    {
+      onError: (err) => {
+        console.log(err);
+      },
+      onSuccess: (res) => {
+        console.log(res);
+      },
+    }
+  );
+
+  const deletePost = () => {
+    mutate(id);
+  };
+
   return (
     <div className="bg-white my-8 p-8 rounded-lg">
       <div className="flex items-center gap-2">
@@ -41,7 +63,7 @@ export default function EditPost({
       </div>
       {toggle && (
         <Toggle
-          postId={id}
+          deletePost={deletePost}
           setToggle={setToggle}
         />
       )}

@@ -1,20 +1,14 @@
 "use client";
 
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 type Props = {
-  postId: string;
+  deletePost: () => void;
   setToggle: (toggle: boolean) => void;
 };
 
-export default function Toggle({ postId, setToggle }: Props) {
-  const deletePost = async () => {
-    const result = await axios.post("/api/posts/deletePost", {
-      data: { postId },
-    });
-    console.log(result);
-    return result;
-  };
+export default function Toggle({ deletePost, setToggle }: Props) {
   return (
     <div
       onClick={() => setToggle(false)}
@@ -26,7 +20,7 @@ export default function Toggle({ postId, setToggle }: Props) {
           Cofirming will permanently delete this teet!
         </h3>
         <button
-          onClick={() => deletePost()}
+          onClick={deletePost}
           className="rounded-md px-4 py-2 text-white text-sm bg-red-600"
         >
           Delete Teet!
