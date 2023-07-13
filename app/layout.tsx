@@ -17,10 +17,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`mx-4 md:mx-48 xl:mx-96 ${roboto.variable}`}>
-        <QueryWrapper>
-          <Nav />
-          {children}
-        </QueryWrapper>
+        <Nav />
+        <QueryWrapper>{children}</QueryWrapper>
       </body>
     </html>
   );

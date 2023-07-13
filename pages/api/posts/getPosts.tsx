@@ -1,6 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { authOptions } from "../auth/[...nextauth]";
-import { getServerSession } from "next-auth";
 import prisma from "../../../prisma/client";
 
 export default async function handler(
@@ -20,7 +18,7 @@ export default async function handler(
       });
       return res.status(200).json(result);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return res
         .status(403)
         .json({ message: "Some error occured while loading teets!" });

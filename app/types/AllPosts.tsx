@@ -3,7 +3,7 @@ export type AllPosts = {
   avatar: string;
   title: string;
   name: string;
-  comments?: {
+  Comment?: {
     id: string;
     comment: string;
     createdAt: string;

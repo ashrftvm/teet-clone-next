@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AllPosts } from "../types/AllPosts";
 
-export default function Post({ avatar, name, title, id, comments }: AllPosts) {
+export default function Post({ avatar, name, title, id, Comment }: AllPosts) {
   return (
     <div className="bg-white my-8 p-8 rounded-lg">
       <div className="flex flex-col">
@@ -23,7 +23,7 @@ export default function Post({ avatar, name, title, id, comments }: AllPosts) {
         <div className="flex gap-4 cursor-pointer items-center">
           <Link href={`/post/${id}`}>
             <p className="text-sm font-bold text-gray-700">
-              {comments?.length} Comments
+              {Comment?.length} Comments
             </p>
           </Link>
         </div>

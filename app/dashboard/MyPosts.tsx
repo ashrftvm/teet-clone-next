@@ -16,17 +16,17 @@ export default function MyPosts() {
     queryKey: ["auth-posts"],
   });
   if (isLoading) return "Your teets are loading... ⌛";
-  console.log(data.posts);
+  //   console.log(data);
   return (
     <div>
       {data?.posts?.map((post: AllPosts) => (
         <EditPost
           key={post.id}
           id={post.id}
-          avatar={post.avatar}
+          avatar={data.user.image}
           title={post.title}
-          name={post.name}
-          comments={post.comments}
+          name={data.user.name}
+          Comment={post.Comment}
         ></EditPost>
       ))}
     </div>

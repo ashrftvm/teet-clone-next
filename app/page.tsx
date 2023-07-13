@@ -19,7 +19,7 @@ export default function Home() {
   });
   if (error) return error;
   if (isLoading) return "Loading...";
-  console.log(data);
+  // console.log(data, "in main page");
   return (
     <main>
       <h1>Hello next</h1>
@@ -27,7 +27,7 @@ export default function Home() {
       {data?.map((post: PostType) => (
         <Post
           key={post.id}
-          comments={post.Comment}
+          Comment={post.Comment}
           name={post.user.name}
           avatar={post.user.image}
           title={post.title}
