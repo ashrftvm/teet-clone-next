@@ -30,7 +30,7 @@ export default function Home() {
           comments={post.Comment}
           name={post.user.name}
           avatar={post.user.image}
-          postTitle={post.title}
+          title={post.title}
           id={post.id}
         />
       ))}
