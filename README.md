@@ -1,34 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Teet it. - Next.js Application
 
-## Getting Started
+Teet it. is a Next.js application that utilizes PostgreSQL as the database hosted on Railway.app. It integrates Google Single Sign-On (SSO) for authentication and incorporates React and Tailwind CSS for the frontend. The application is hosted on Vercel.app.
 
-First, run the development server:
+## How to Run the Application
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+To run the Teet it. application locally, please follow the steps below:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Prerequisites
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Before proceeding, make sure you have the following installed:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Node.js (v14 or higher)
+- PostgreSQL (Railway app instance)
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   git clone <repository-url>
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. Install the dependencies:
 
-## Deploy on Vercel
+   ```bash
+   cd teet-it
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Update env variables:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   - Railway app instance
+   - Google secret keys
+
+4. Run database migrations:
+
+   ```bash
+   npx prisma migrate dev
+   ```
+
+5. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+6. Open your browser and navigate to `http://localhost:3000` to access the Teet it. application.
+
+## Deployment
+
+To deploy the Teet it. application to Vercel.app, follow these steps:
+
+1. Sign up for a Vercel account at [https://vercel.com](https://vercel.com).
+
+2. Connect your Vercel account to the Git repository where the Teet it. application code is hosted.
+
+3. Configure the necessary environment variables in the Vercel app settings, similar to the ones in the `.env.local` file.
+
+4. Trigger a deployment from Vercel, either manually or by pushing changes to the connected Git repository.
+
+5. Once the deployment is complete, Vercel will provide you with the application URL. Access the Teet it. application using this URL.
+
+Now you can access and use the Teet it. application on Vercel.
+
+Please note that the deployment steps might differ slightly based on your specific setup and configuration.
+
+## Conclusion
+
+Congratulations! You now have the Teet it. application up and running locally as well as deployed on Vercel.app. You can start exploring its features and customizing it further to fit your needs. Enjoy using Teet it. for your Next.js development projects!
