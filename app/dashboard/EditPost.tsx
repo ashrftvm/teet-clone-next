@@ -6,6 +6,9 @@ import Toggle from "./Toggle";
 import { useState } from "react";
 import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
+
+let deleteToastId: string;
 
 export default function EditPost({
   id,
@@ -16,22 +19,26 @@ export default function EditPost({
 }: AllPosts) {
   // Toggle
   const [toggle, setToggle] = useState(false);
-
+  const qc = useQueryClient();
   // Deleting the teet
   const { mutate } = useMutation(
     async (id: string) =>
       await axios.post("/api/posts/deletePost", { data: { postId: id } }),
     {
       onError: (err) => {
-        console.log(err);
+        // console.log(err, "ash");
+        toast.error("Error in deleting teet ☹️", { id: deleteToastId });
       },
       onSuccess: (res) => {
-        console.log(res);
+        // console.log(res);
+        toast.success("Successfully deleted teet! 🥳", { id: deleteToastId });
+        qc.invalidateQueries(["auth-posts"]);
       },
     }
   );
 
   const deletePost = () => {
+    deleteToastId = toast.loading("Deleting your teet!", { id: deleteToastId });
     mutate(id);
   };
 
