@@ -14,5 +14,11 @@ export type PostType = {
     postId: string;
     userId: string;
     comment: string;
+    user: {
+      email: string;
+      id: string;
+      image: string;
+      name: string;
+    };
   }[];
 };

@@ -22,7 +22,6 @@ export default function Home() {
   // console.log(data, "in main page");
   return (
     <main>
-      <h1>Hello next</h1>
       <AddPost></AddPost>
       {data?.map((post: PostType) => (
         <Post
