@@ -21,16 +21,14 @@ export default async function handler(
       if (!title.length) {
         return res.status(401).json({ message: "Please enter some comments!" });
       }
-      const data = await prisma.comment.create({
+      const result = await prisma.comment.create({
         data: {
           comment: title,
           postId: id,
-          userId: prismaUser?.id,
+          userId: prismaUser?.id as string,
         },
       });
-      return res
-        .status(200)
-        .json({ message: "Successfully added your comment!" });
+      return res.status(200).json(result);
     } catch (error) {
       return res
         .status(403)
